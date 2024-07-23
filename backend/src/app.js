@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 
 const app= express()
 app.use(cors({
-  origin: 'https://e-commerce-full-stack-one.vercel.app',
+  origin: process.env.CORS_ORIGIN || 'https://e-commerce-full-stack-one.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }));
