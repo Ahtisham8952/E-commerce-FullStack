@@ -5,9 +5,8 @@ import bodyParser from 'body-parser';
 
 const app= express()
 app.use(cors({
-    origin:process.env.CORS_ORIGIN,
-    credentials:true
-}))
+  origin: process.env.CORS_ORIGIN || '*', // Make sure this matches your frontend's URL
+}));
 app.use(bodyParser.json());
 // routes import
 
