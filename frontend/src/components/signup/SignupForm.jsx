@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
-import { Box, Button, Flex, Img, Text, Checkbox, Link, Input } from "@chakra-ui/react";
+import { Box, Button, Flex, Img, Text, Checkbox,  Input, Image } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 import CustomInput from "../signup/CustomInput";
 import PassHideShow from "../signup/PassHideShow";
 import { useNavigate } from 'react-router-dom';
@@ -71,14 +72,22 @@ const SignupForm = () => {
 
   return (
     <Box
-      w="100%"
-      display="flex"
-      flexDirection={{ base: "column", md: "column", lg: "row" }}
-    >
+    w="100%"
+    h="100%"
+    backgroundImage="url('bgblue.webp')"
+    backgroundPosition="center"
+    backgroundRepeat="no-repeat"
+    backgroundSize="cover"
+    display="flex"
+    flexDirection={{ base: "column", md: "column", lg: "row" }}
+    alignItems="center"
+    justifyContent="center"
+  >
+   
       <Box
-        bg="#161A2D"
+      
         w={{ base: "100%", md: "100%", lg: "50%" }}
-        h={{ base: "100%", md: "100vh", lg: "100%" }}
+        h={{ base: "100%", md: "100%", lg: "100%" }}
       >
         <Box
           display="flex"
@@ -97,7 +106,7 @@ const SignupForm = () => {
             justifyContent={{ base: "center", md: "left" }}
             alignItems={{ base: "center", md: "left" }}
           >
-            <Img src="/Logo.svg" mb="17px"></Img>
+            <Image h="200px" w="200px" src="/logo.png" alt="img" />
             <Text
               as="p"
               color="#9FBCD6"
@@ -305,7 +314,8 @@ position={"absolute"}
               mt="36px"
             >
               <Button
-                w={{ base: "100%", md: "50%" }}
+               type="submit"
+                w={{ base: "100%", md: "100%" }}
                 h="48px"
                 color="white"
                 colorScheme="transparent"
@@ -314,21 +324,9 @@ position={"absolute"}
                 py="12px"
                 fontSize={{ base: "16px", md: "14px", xl: "16px" }}
               >
-                <Img src="/Google.svg" mr="8px"></Img>SIGN UP WITH GOOGLE
+                SIGN UP 
               </Button>
-              <Box w={{ base: "100%", md: "50%" }}>
-                <Button
-                  type="submit"
-                  w="100%"
-                  h="48px
-ChatGPT
-"
-                  color="white"
-                  colorScheme="blue"
-                >
-                  SIGN UP
-                </Button>
-              </Box>
+            
             </Box>
             <Box mt="32px">
               <Text
@@ -339,7 +337,7 @@ ChatGPT
                 lineHeight="22px"
               >
                 Already have an account?{" "}
-                <Link href="#" color="#1DB4F4" ml="4px">
+                <Link to="/login" color="#1DB4F4" ml="4px">
                   Sign in
                 </Link>
               </Text>
@@ -348,13 +346,17 @@ ChatGPT
         </Box>
       </Box>
       <Box
-        bg="#DEE2E2"
+      
         w={{ base: "100%", md: "100%", lg: "50%" }}
-        display={{ base: "none", md: "none", lg: "block" }}
+        display={{ base: "none", md: "none", lg: "flex" }}
       >
-        <Box h="100vh" py="60px"></Box>
+        <Box h="100vh" py="60px">
+          <Image objectFit={"contain"} src="sidepic.webp"></Image>
+        </Box>
       </Box>
-    </Box>
+    
+  </Box>
+    
   );
 };
 

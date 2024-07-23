@@ -1,4 +1,5 @@
-import { Box, Button, Flex, Img, Text, Checkbox, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Img, Text, Checkbox, Image, } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { Buttons } from "../signup/Buttons";
 import CustomInput from "../signup/CustomInput";
@@ -52,7 +53,7 @@ export const SigninForm = () => {
             px={{ base: "30px", md: "30px", lg: "40px" }}
           >
             <Box>
-              <Img src="/Logo.svg" mb="17px"></Img>
+            <Image h="200px" w="200px" src="/logo.png" alt="img" />
 
               <Text as="p" color="#9FBCD6" fontSize={"15px"} fontWeight="400">
                 A first-of-its-kind Social Commerce platform & application built
@@ -135,7 +136,7 @@ export const SigninForm = () => {
               fontSize={{ base: "16px", md: "14px", xl: "16px" }}
             >
               {" "}
-              <Img src="/Google.svg" mr="8px"></Img>SIGN IN WITH GOOGLE
+             SIGN IN 
             </Button>
             <Box
               _before={{
@@ -204,7 +205,7 @@ export const SigninForm = () => {
                 lineHeight={"22px"}
               >
                 Not Registered yet?{" "}
-                <Link href="/signup" color="#1DB4F4">
+                <Link to="/signup" color="#1DB4F4">
                   Create an account
                 </Link>
               </Text>

@@ -19,12 +19,13 @@ function App() {
   return (
     <UserContextProvider value={{ user, setUser }}>
       <Router>
-        <MainHeader />
+        {user && <MainHeader />}
+        
         <Routes>
-          <Route path="/" element={<SignupForm />} />
+          <Route path="/" element={<ProtectedRoute element={<Products />} />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<SigninForm />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={<ProtectedRoute element={<Products />} />}  />
           <Route path="/products/:productId" element={<ProductDetails />} />
           <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
           <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />

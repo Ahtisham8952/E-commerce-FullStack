@@ -20,7 +20,7 @@ const MainHeader = () => {
             alignItems="center"
             minH="112px"
           >
-            <Link to="/signup" minW="150px" maxW={{ base: "150px", md: "190px" }}>
+            <Link to="/" minW="150px" maxW={{ base: "150px", md: "190px" }}>
               <Box>
                 {/* <Image src="/marketplace-logo.svg" alt="img" /> */}
                 <Image h="67px" w='100px' src="/logo.png" alt="img" />
@@ -38,7 +38,7 @@ const MainHeader = () => {
               <MainMenuList />
 
               {/* <SearchBox /> */}
-              <Button
+              {/* <Button
               bg="transparent"
               p="0"
               _hover={{ bg: "transparent" }}
@@ -48,9 +48,9 @@ const MainHeader = () => {
               width="24px"
             >
               <Image src="/market-search-icon.svg" alt="icon" />
-            </Button>
+            </Button> */}
 
-              <MenuBtns />
+              {/* <MenuBtns /> */}
             </Box>
             <Box display={{ lg: "none" }}>
               <Flex gap="20px" alignItems="center" justifyContent="flex-end">
