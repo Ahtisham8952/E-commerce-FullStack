@@ -5,9 +5,10 @@ import bodyParser from 'body-parser';
 
 const app= express()
 app.use(cors({
-    origin:process.env.CORS_ORIGIN,
-    credentials:true
-}))
+  origin: 'https://e-commerce-full-stack-one.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
 app.use(bodyParser.json());
 // routes import
 
