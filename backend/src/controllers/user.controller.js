@@ -21,8 +21,8 @@ const refreshToken=user.generateRefreshToken()
 
 const registerUser = asyncHandler(async (req, res) => {
     const { fullName, email, username, password } = req.body;
-    const avatarFile = req.file?.avatar;  // Adjust if necessary
-    const coverImageFile = req.file?.coverImage; // Adjust if necessary
+    const avatarFile = req.file?.avatar;  // Adjust as necessary
+    const coverImageFile = req.file?.coverImage; // Adjust as necessary
 
     // Check if required fields are provided
     if ([fullName, email, username, password].some(field => !field.trim())) {
@@ -37,7 +37,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(409, "Username or email already exists");
     }
 
-    // Upload files to Cloudinary
+    // Upload files to Cloudinary if present
     const avatarUploadResult = avatarFile
         ? await uploadOnCloudinary(avatarFile.buffer)
         : null;
@@ -48,8 +48,8 @@ const registerUser = asyncHandler(async (req, res) => {
     // Create new user
     const user = await User.create({
         fullName,
-        avatar: avatarUploadResult?.secure_url || "",
-        coverImage: coverImageUploadResult?.secure_url || "",
+        avatar: avatarUploadResult?.secure_url || "", // Handle optional file
+        coverImage: coverImageUploadResult?.secure_url || "", // Handle optional file
         email,
         password,
         username
