@@ -1,4 +1,8 @@
 import { extendTheme } from '@chakra-ui/react'
+import "@fontsource/inter"; // Defaults to weight 400
+import "@fontsource/inter/400.css"; // Specify weight
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/800.css";
 
 const activeLabelStyles = {
   display: "none"
@@ -47,8 +51,8 @@ export const mynewtheme = extendTheme({
     xl: "1280px",
   },
   fonts: {
-    heading: `'Open Sans', sans-serif`,
-    body: `'Poppins', sans-serif`,
+    heading: `'Inter', sans-serif`,
+    body: `'Inter', sans-serif`,
     poppinsFont:`'Poppins', sans-serif`,
   },
 

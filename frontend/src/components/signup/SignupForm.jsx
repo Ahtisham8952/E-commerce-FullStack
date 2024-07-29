@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
-import { Box, Button, Flex, Img, Text, Checkbox,  Input, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Img, Text, Checkbox,  Input, Image, Spinner } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import CustomInput from "../signup/CustomInput";
 import PassHideShow from "../signup/PassHideShow";
 import { useNavigate } from 'react-router-dom';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const SignupForm = () => {
   const [fileName, setFileName] = useState("");
   const [avatarError, setAvatarError] = useState("");
   const [coverImageError, setCoverImageError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigator=useNavigate()
   const formik = useFormik({
     initialValues: {
@@ -38,10 +40,10 @@ const SignupForm = () => {
       formDataToSend.append("fullName", values.fullName);
       formDataToSend.append("avatar", values.avatar);
       formDataToSend.append("coverImage", values.coverImage);
-
+      setIsLoading(true);
       try {
         const response = await axios.post(
-          "/api/users/register",
+          `${API_BASE_URL}/api/users/register`,
           formDataToSend,
           {
             headers: {
@@ -61,6 +63,9 @@ const SignupForm = () => {
         console.error("Response Data:", error.response?.data);
         // Handle error responses more gracefully
         // Example: setErrorMessage(error.response.data.message);
+      }
+      finally {
+        setIsLoading(false); // Set loading to false after the request completes
       }
     },
   });
@@ -106,7 +111,7 @@ const SignupForm = () => {
             justifyContent={{ base: "center", md: "left" }}
             alignItems={{ base: "center", md: "left" }}
           >
-            <Image h="200px" w="200px" src="/logo.png" alt="img" />
+          
             <Text
               as="p"
               color="#9FBCD6"
@@ -323,8 +328,9 @@ position={"absolute"}
                 border="1px solid white"
                 py="12px"
                 fontSize={{ base: "16px", md: "14px", xl: "16px" }}
+                isLoading={isLoading}
               >
-                SIGN UP 
+                {isLoading ? <Spinner /> : "Sign Up"}
               </Button>
             
             </Box>

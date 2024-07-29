@@ -16,7 +16,7 @@ export const SigninForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL}api/users/login`, {
+      const response = await axios.post(`${API_BASE_URL}/api/users/login`, {
         email,
         password,
       });
@@ -53,7 +53,7 @@ export const SigninForm = () => {
             px={{ base: "30px", md: "30px", lg: "40px" }}
           >
             <Box>
-            <Image h="200px" w="200px" src="/logo.png" alt="img" />
+         
 
               <Text as="p" color="#9FBCD6" fontSize={"15px"} fontWeight="400">
                 A first-of-its-kind Social Commerce platform & application built
@@ -66,6 +66,7 @@ export const SigninForm = () => {
 
             <Box mt={"24px"}>
               <Text
+              textAlign={"left"}
                 fontSize="16px"
                 fontWeight={"600"}
                 lineHeight="24px"
@@ -85,6 +86,7 @@ export const SigninForm = () => {
             </Box>
             <Box mt={"24px"}>
               <Text
+               textAlign={"left"}
                 fontSize="16px"
                 fontWeight={"600"}
                 lineHeight="24px"
@@ -165,37 +167,7 @@ export const SigninForm = () => {
             >
               OR
             </Box>
-            <Box
-              display={"flex"}
-              alignItems="center"
-              flexDirection={{ base: "column", md: "row" }}
-              gap="24px"
-              mt="35px"
-            >
-              <Button
-                w={{ base: "100%", md: "row" }}
-                h="48px"
-                color="white"
-                colorScheme={"transparent"}
-                bg="transparent"
-                border="1px solid white"
-                py="12px"
-                fontSize={{ base: "16px", md: "14px", xl: "16px" }}
-              >
-                {" "}
-                <Img src="/Google.svg" mr="8px"></Img>SIGN IN WITH GOOGLE
-              </Button>
-              <Button
-                w={{ base: "100%", md: "row" }}
-                h="48px"
-                bg="#4A607C"
-                colorScheme={"#4A607C"}
-                color="white"
-                py="12px"
-              >
-                SIGN IN WITH WALLET
-              </Button>
-            </Box>
+            
             <Box mt="32px">
               <Text
                 as="span"

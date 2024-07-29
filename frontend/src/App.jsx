@@ -13,23 +13,34 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { SigninForm } from "./components/Login/Login";
 import ProductDetails from "./components/ProductDetail/ProductDetails";
 
+import HeroSection from "./components/MianPage/HeroSection";
+import Footer from "./components/Footer/Footer";
+import { Image } from "@chakra-ui/react";
+import HomePage from "./components/MianPage/HeroSection";
+
 function App() {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState("");
 
   return (
     <UserContextProvider value={{ user, setUser }}>
       <Router>
-        {user && <MainHeader />}
-        
+        <MainHeader />
+
         <Routes>
-          <Route path="/" element={<ProtectedRoute element={<Signup />} />} />
+        <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<SigninForm />} />
-          <Route path="/products" element={<ProtectedRoute element={<Products />} />}  />
+          <Route path="/products" element={<Products />} />
+
           <Route path="/products/:productId" element={<ProductDetails />} />
-          <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+          <Route
+            path="/profile"
+            element={<ProtectedRoute element={<Profile />} />}
+          />
           <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />
         </Routes>
+        
+        <Footer />
       </Router>
     </UserContextProvider>
   );

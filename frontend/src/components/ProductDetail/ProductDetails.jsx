@@ -13,7 +13,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const getProductFunction = async () => {
       try {
-        const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+        const response = await axios.get(`http://localhost:4000/api/products/${productId}`);
         const data = response.data;
         setProduct(data);
       } catch (error) {
