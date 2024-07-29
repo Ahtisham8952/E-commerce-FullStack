@@ -21,47 +21,38 @@ const refreshToken=user.generateRefreshToken()
 
 const registerUser = asyncHandler(async (req, res) => {
     const { fullName, email, username, password } = req.body;
-    console.log("email", email);
+    const avatarFile = req.file?.avatar;  // Adjust if necessary
+    const coverImageFile = req.file?.coverImage; // Adjust if necessary
 
-    // Check if any required field is missing
-    if ([fullName, email, username, password].some((field) => field?.trim() === "")) {
+    // Check if required fields are provided
+    if ([fullName, email, username, password].some(field => !field.trim())) {
         throw new ApiError(400, "All fields are required");
     }
 
-    // Check if the user already exists
-    const existedUser = await User.findOne({
+    // Check if user already exists
+    const existingUser = await User.findOne({
         $or: [{ username }, { email }]
     });
-
-    if (existedUser) {
+    if (existingUser) {
         throw new ApiError(409, "Username or email already exists");
     }
 
-    // Get file paths
-    const avatarLocalPath = req.files?.avatar?.[0]?.path;
-    const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
-
-    // Check if avatar file is provided
-    if (!avatarLocalPath) {
-        throw new ApiError(400, "Avatar file is required");
-    }
-
     // Upload files to Cloudinary
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
-    const coverImage = await uploadOnCloudinary(coverImageLocalPath);
+    const avatarUploadResult = avatarFile
+        ? await uploadOnCloudinary(avatarFile.buffer)
+        : null;
+    const coverImageUploadResult = coverImageFile
+        ? await uploadOnCloudinary(coverImageFile.buffer)
+        : null;
 
-    if (!avatar) {
-        throw new ApiError(400, "Failed to upload avatar file");
-    }
-
-    // Create user
+    // Create new user
     const user = await User.create({
         fullName,
-        avatar: avatar.url,
-        coverImage: coverImage?.url || "",
+        avatar: avatarUploadResult?.secure_url || "",
+        coverImage: coverImageUploadResult?.secure_url || "",
         email,
         password,
-        username,
+        username
     });
 
     const createdUser = await User.findById(user._id).select("-password -refreshToken");
