@@ -43,21 +43,23 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // Upload files to Cloudinary
-    const avatar = await uploadOnCloudinary(avatarFile.path);
-    const coverImage = coverImageFile ? await uploadOnCloudinary(coverImageFile.path) : null;
+    const avatarUploadResult = await uploadOnCloudinary(avatarFile.path);
+    const coverImageUploadResult = coverImageFile
+        ? await uploadOnCloudinary(coverImageFile.path)
+        : null;
 
-    if (!avatar) {
+    if (!avatarUploadResult) {
         throw new ApiError(400, "Failed to upload avatar file");
     }
 
     // Create user
     const user = await User.create({
         fullName,
-        avatar: avatar.url,
-        coverImage: coverImage?.url || "",
+        avatar: avatarUploadResult.url,
+        coverImage: coverImageUploadResult?.url || "",
         email,
         password,
-        username,
+        username
     });
 
     const createdUser = await User.findById(user._id).select("-password -refreshToken");
