@@ -22,8 +22,8 @@ const MenuBtns = () => {
             border="1px solid #F0FCFB"
             borderRadius="50px"
             height={{ base: "45px", xl: "54px" }}
-            minW="max-content"
-            maxW={{ base: "190px", lg: "140px", xl: "190px" }}
+            minWidth="max-content"
+            maxWidth={{ base: "190px", lg: "140px", xl: "190px" }}
             width="100%"
             fontSize={{ base: "16px", lg: "12px", xl: "16px" }}
             lineHeight="24px"

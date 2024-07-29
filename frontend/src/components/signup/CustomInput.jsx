@@ -23,7 +23,7 @@ const CustomInput = ({ Formlabel, width, FormInputVal, onTextChange, nameofinput
       <FormControl
         bg={"transparent"}
         variant={"floating"}
-        id="first-name"
+    
         isRequired={true}
       >
         <Input

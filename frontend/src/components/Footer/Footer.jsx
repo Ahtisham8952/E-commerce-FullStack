@@ -26,9 +26,9 @@ import {
           direction={{ base: 'column', md: 'row' }}
         >
           <Box maxW="300px">
-            <Link href="https://templateskart.com" isExternal>
+          
             <Image  src="/logobreeze.svg" alt="img" />
-            </Link>
+           
             <Text mt={2} color="gray.500" fontSize="md">
               In Canada
             </Text>

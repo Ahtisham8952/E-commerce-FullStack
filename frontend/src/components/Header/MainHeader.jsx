@@ -20,7 +20,7 @@ const MainHeader = () => {
             alignItems="center"
             minH="112px"
           >
-            <Link to="/" minW="150px" maxW={{ base: "150px", md: "190px" }}>
+            <Link to="/" >
               <Box>
                 {/* <Image src="/marketplace-logo.svg" alt="img" /> */}
                 <Image  src="/logobreeze.svg" alt="img" />
