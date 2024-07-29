@@ -35,8 +35,13 @@ app.use('/api/products', (req, res, next) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
+  console.error("Error Occurred:");
+  console.error("Message:", err.message);
+  console.error("Stack:", err.stack);
+  res.status(err.status || 500).json({
+    error: err.message || 'Something went wrong!',
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+  });
 });
 
 export default app;
