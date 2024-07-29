@@ -8,7 +8,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'https://e-commerce-full-stack-one.vercel.app',
+  origin: process.env.CORS_ORIGIN || 'https://e-commerce-full-stack-r277.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }));
@@ -34,9 +34,9 @@ app.use('/api/products', (req, res, next) => {
 }, productRoutes);
 
 // Error handling middleware
-// app.use((err, req, res, next) => {
-//   console.error(err.stack);
-//   res.status(500).json({ error: 'Something went wrong!' });
-// });
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
 
 export default app;
