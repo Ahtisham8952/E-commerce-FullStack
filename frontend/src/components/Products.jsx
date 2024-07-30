@@ -19,7 +19,7 @@ import { add } from '../features/Auth/cartSlice';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ProductVariants from './ProductVariants/ProductVariants';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const Products = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Products = () => {
   useEffect(() => {
     const getProductsFunction = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/products'); // Adjust the URL to match your backend endpoint
+        const response = await axios.get(`${API_BASE_URL}/api/products`); // Adjust the URL to match your backend endpoint
         const data = response.data;
         console.log(data);
         setProducts(data);
