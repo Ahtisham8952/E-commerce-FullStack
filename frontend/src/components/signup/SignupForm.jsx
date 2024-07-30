@@ -20,7 +20,7 @@ const SignupForm = () => {
       password: "",
       fullName: "",
       address:'',
-      phoneNumber:''
+      phonenumber:''
       // avatar: null,
       // coverImage: null,
     },
@@ -41,7 +41,7 @@ const SignupForm = () => {
       formDataToSend.append("password", values.password);
       formDataToSend.append("fullName", values.fullName);
       formDataToSend.append("address", values.address);
-      formDataToSend.append("phoneNumber", values.phoneNumber);
+      formDataToSend.append("phoneNumber", values.phonenumber);
       setIsLoading(true);
       try {
         const response = await axios.post(
@@ -212,9 +212,9 @@ const SignupForm = () => {
               <CustomInput
                 Formlabel="phone Number"
                 Required={true}
-                FormInputVal={formik.values.phoneNumber}
+                FormInputVal={formik.values.phonenumber}
                 onTextChange={formik.handleChange}
-                nameofinput="phoneNumber"
+                nameofinput="phonenumber"
               />
             </Box>
             {/* <Box mt="24px">
