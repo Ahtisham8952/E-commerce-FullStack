@@ -19,27 +19,29 @@ const SignupForm = () => {
       email: "",
       password: "",
       fullName: "",
-      avatar: null,
-      coverImage: null,
+      address:'',
+      phoneNumber:''
+      // avatar: null,
+      // coverImage: null,
     },
     onSubmit: async (values) => {
       console.log(values);
-      if (!values.avatar) {
-        setAvatarError("Avatar image is required.");
-        return;
-      }
-      if (!values.coverImage) {
-        setCoverImageError("Cover image is required.");
-        return;
-      }
+      // if (!values.avatar) {
+      //   setAvatarError("Avatar image is required.");
+      //   return;
+      // }
+      // if (!values.coverImage) {
+      //   setCoverImageError("Cover image is required.");
+      //   return;
+      // }
 
       const formDataToSend = new FormData();
       formDataToSend.append("username", values.username);
       formDataToSend.append("email", values.email);
       formDataToSend.append("password", values.password);
       formDataToSend.append("fullName", values.fullName);
-      formDataToSend.append("avatar", values.avatar);
-      formDataToSend.append("coverImage", values.coverImage);
+      formDataToSend.append("address", values.address);
+      formDataToSend.append("phoneNumber", values.phoneNumber);
       setIsLoading(true);
       try {
         const response = await axios.post(
@@ -70,10 +72,10 @@ const SignupForm = () => {
     },
   });
 
-  const handleFileChange = (e) => {
-    formik.setFieldValue(e.target.name, e.target.files[0]);
-    setFileName(e.target.files[0].name);
-  };
+  // const handleFileChange = (e) => {
+  //   formik.setFieldValue(e.target.name, e.target.files[0]);
+  //   setFileName(e.target.files[0].name);
+  // };
 
   return (
     <Box
@@ -198,6 +200,24 @@ const SignupForm = () => {
               </Box>
             </Box>
             <Box mt="24px">
+              <CustomInput
+                Formlabel="Address"
+                Required={true}
+                FormInputVal={formik.values.address}
+                onTextChange={formik.handleChange}
+                nameofinput="address"
+              />
+            </Box>
+            <Box mt="24px">
+              <CustomInput
+                Formlabel="phone Number"
+                Required={true}
+                FormInputVal={formik.values.phoneNumber}
+                onTextChange={formik.handleChange}
+                nameofinput="phoneNumber"
+              />
+            </Box>
+            {/* <Box mt="24px">
               <Box  position={"relative"} p="17px"
                h="54px"
                bg="#192C45"
@@ -222,8 +242,8 @@ position={"absolute"}
               </Box>
               
               {avatarError && <p style={{ color: "red" }}>{avatarError}</p>}
-            </Box>
-            <Box mt="24px">
+            </Box> */}
+            {/* <Box mt="24px">
             <Box  position={"relative"} p="17px"
                h="54px"
                bg="#192C45"
@@ -249,7 +269,7 @@ position={"absolute"}
               {coverImageError && (
                 <p style={{ color: "red" }}>{coverImageError}</p>
               )}
-            </Box>
+            </Box> */}
             <Box mt="16px" mb="27px">
               <Text
                 fontSize="13px"
