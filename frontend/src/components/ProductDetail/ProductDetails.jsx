@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { add } from '../../features/Auth/cartSlice';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const ProductDetail = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
@@ -13,7 +13,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const getProductFunction = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/products/${productId}`);
+        const response = await axios.get(`${API_BASE_URL}/api/products/${productId}`);
         const data = response.data;
         setProduct(data);
       } catch (error) {
