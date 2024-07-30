@@ -23,6 +23,14 @@ const UserSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    address:{
+      type: String,
+      required: true,
+    },
+    phonenumber:{
+      type: String,
+      required: true,
+    },
     avatar: {
         type: String,
         // required: true,
