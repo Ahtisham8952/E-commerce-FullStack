@@ -41,7 +41,7 @@ const SignupForm = () => {
       formDataToSend.append("password", values.password);
       formDataToSend.append("fullName", values.fullName);
       formDataToSend.append("address", values.address);
-      formDataToSend.append("phoneNumber", values.phonenumber);
+      formDataToSend.append("phonenumber", values.phonenumber);
       setIsLoading(true);
       try {
         const response = await axios.post(
