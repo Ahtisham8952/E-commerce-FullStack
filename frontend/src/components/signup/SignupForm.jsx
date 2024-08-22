@@ -20,20 +20,20 @@ const SignupForm = () => {
       password: "",
       fullName: "",
       address:'',
-      phonenumber:''
-      // avatar: null,
-      // coverImage: null,
+      phonenumber:'',
+      avatar: null,
+      coverImage: null,
     },
     onSubmit: async (values) => {
       console.log(values);
-      // if (!values.avatar) {
-      //   setAvatarError("Avatar image is required.");
-      //   return;
-      // }
-      // if (!values.coverImage) {
-      //   setCoverImageError("Cover image is required.");
-      //   return;
-      // }
+      if (!values.avatar) {
+        setAvatarError("Avatar image is required.");
+        return;
+      }
+      if (!values.coverImage) {
+        setCoverImageError("Cover image is required.");
+        return;
+      }
 
       const formDataToSend = new FormData();
       formDataToSend.append("username", values.username);
@@ -42,6 +42,7 @@ const SignupForm = () => {
       formDataToSend.append("fullName", values.fullName);
       formDataToSend.append("address", values.address);
       formDataToSend.append("phonenumber", values.phonenumber);
+      formDataToSend.append("avatar", values.avatar);
       setIsLoading(true);
       try {
         const response = await axios.post(
@@ -72,10 +73,10 @@ const SignupForm = () => {
     },
   });
 
-  // const handleFileChange = (e) => {
-  //   formik.setFieldValue(e.target.name, e.target.files[0]);
-  //   setFileName(e.target.files[0].name);
-  // };
+  const handleFileChange = (e) => {
+    formik.setFieldValue(e.target.name, e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
 
   return (
     <Box
@@ -217,7 +218,7 @@ const SignupForm = () => {
                 nameofinput="phonenumber"
               />
             </Box>
-            {/* <Box mt="24px">
+            <Box mt="24px">
               <Box  position={"relative"} p="17px"
                h="54px"
                bg="#192C45"
@@ -242,7 +243,7 @@ position={"absolute"}
               </Box>
               
               {avatarError && <p style={{ color: "red" }}>{avatarError}</p>}
-            </Box> */}
+            </Box>
             {/* <Box mt="24px">
             <Box  position={"relative"} p="17px"
                h="54px"
