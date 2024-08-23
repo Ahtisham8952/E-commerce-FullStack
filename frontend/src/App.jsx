@@ -13,10 +13,11 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { SigninForm } from "./components/Login/Login";
 import ProductDetails from "./components/ProductDetail/ProductDetails";
 
-import HeroSection from "./components/MianPage/HeroSection";
+
 import Footer from "./components/Footer/Footer";
 import { Image } from "@chakra-ui/react";
-import HomePage from "./components/MianPage/HeroSection";
+import HomePage from "./components/MianPage/HomePage";
+
 
 function App() {
   const [user, setUser] = useState("");

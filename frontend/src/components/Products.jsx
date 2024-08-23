@@ -19,6 +19,7 @@ import { add } from '../features/Auth/cartSlice';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ProductVariants from './ProductVariants/ProductVariants';
+import Productinfo from './ProductInfo/Productinfo';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -80,6 +81,9 @@ const Products = () => {
       
      
       <Button
+      colorScheme='#7D31EA'
+      _focus={{ outline: 'none' }} 
+      _focusVisible={{ outline: 'none' }}  
         onClick={() => addtocart(product)}
         bg="#7D31EA"
         color="white"
@@ -99,15 +103,28 @@ const Products = () => {
   };
 
   return (
-    <Tabs variant="soft-rounded" colorScheme="blue" mt="40px">
-      <TabList  p='16px 32px' mx={"auto"} justifyContent="space-between" borderBottom={"none"} bg="rgba(49, 17, 100, 0.75)" maxW={"650px"} borderRadius={"100px"}>
-        <Tab  p="14px 46px" bg="transparent" color="rgba(255, 255, 255, 0.65)" borderRadius={"50px"} _selected={{bg:'#FFFFFF',color:'#7D31EA'}}>Breeze Pro</Tab>
-        <Tab p="14px 46px" bg="transparent" color="rgba(255, 255, 255, 0.65)" borderRadius={"50px"} _selected={{bg:'#FFFFFF',color:'#7D31EA'}}>Breeze Prime</Tab>
-        <Tab p="14px 46px" bg="transparent" color="rgba(255, 255, 255, 0.65)" borderRadius={"50px"} _selected={{bg:'#FFFFFF',color:'#7D31EA'}}>Breeze Elite</Tab>
+    <Tabs variant="soft-rounded" colorScheme="blue" mt="40px" mx='20px'>
+      <TabList flexDirection={{base:'column',sm:'row'}}  p='16px 32px' mx={"auto"} justifyContent="space-between" borderBottom={"none"} bg="rgba(49, 17, 100, 0.75)" maxW={"650px"} borderRadius={{base:'35px',md:'100px'}}>
+      <Tab
+  p="14px 46px"
+  bg="transparent"
+  color="rgba(255, 255, 255, 0.65)"
+  borderRadius="50px"
+  _selected={{ bg: '#FFFFFF', color: '#7D31EA' }}
+  _focus={{ outline: 'none' }} 
+  _focusVisible={{ outline: 'none' }}  
+>
+  Breeze Pro
+</Tab>
+        <Tab p="14px 46px" bg="transparent" color="rgba(255, 255, 255, 0.65)" borderRadius={"50px"} _selected={{bg:'#FFFFFF',color:'#7D31EA'}}  _focus={{ outline: 'none' }} 
+  _focusVisible={{ outline: 'none' }}  >Breeze Prime</Tab>
+        <Tab p="14px 46px" bg="transparent" color="rgba(255, 255, 255, 0.65)" borderRadius={"50px"} _selected={{bg:'#FFFFFF',color:'#7D31EA'}}  _focus={{ outline: 'none' }} 
+  _focusVisible={{ outline: 'none' }}  >Breeze Elite</Tab>
       </TabList>
 
       <TabPanels maxW={"1440px"} mx={"auto"}>
         <TabPanel >
+         <Productinfo productname={'Breeze Pro'}/>
          <Flex flexWrap={"wrap"} gap="40px" justifyContent={"center"}>
 
      
@@ -117,6 +134,7 @@ const Products = () => {
             </Flex>
         </TabPanel>
         <TabPanel>
+        <Productinfo productname={'Breeze Prime'}/>
         <Flex flexWrap={"wrap"} gap="40px" justifyContent={"center"}>
 
      
@@ -127,6 +145,7 @@ const Products = () => {
         
         </TabPanel>
         <TabPanel>
+        <Productinfo productname={'Breeze Elite'}/>
         <Flex flexWrap={"wrap"} gap="40px" justifyContent={"center"}>
 
      

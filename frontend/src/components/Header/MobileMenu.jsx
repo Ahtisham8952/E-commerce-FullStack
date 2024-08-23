@@ -41,7 +41,7 @@ export const MobileMenu = () => {
             <Link href="#">
               <Box>
                 <Image
-                  src="https://enochdev.com/marketplace/logo.svg"
+                  src="/logobreeze.svg"
                   alt="img"
                   maxW="150px"
                   mx="auto"
@@ -52,8 +52,8 @@ export const MobileMenu = () => {
 
           <DrawerBody>
             <Flex flexDirection="column" gap="25px" alignItems="center" justifyContent="center">
-              <MainMenuList />
-              <MenuBtns />
+              <MainMenuList onMenuLinkClick={onClose} />
+            
             </Flex>
           </DrawerBody>
         </DrawerContent>

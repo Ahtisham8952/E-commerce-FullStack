@@ -1,16 +1,13 @@
-import { Box, Image } from '@chakra-ui/react'
-import React from 'react'
+// MiddleSection.js
+import React from "react";
+import { Box, Image } from "@chakra-ui/react";
 
 const MiddleSection = () => {
   return (
-  <>
-  <Box>
-    this is my middle section
- 
-  </Box>
-   
-  </>
-  )
-}
+    <Box >
+     <Image w="100%" src="newmiddlesecpic.png"></Image>
+    </Box>
+  );
+};
 
-export default MiddleSection
+export default MiddleSection;

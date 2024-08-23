@@ -1,7 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 import React from "react";
 import { Link } from 'react-router-dom';
-const MainMenuList = () => {
+const MainMenuList = ({onMenuLinkClick }) => {
+  const handleClick = () => {
+    if (onMenuLinkClick) {
+      onMenuLinkClick();
+    }
+  };
   return (
     <>
       <Flex
@@ -20,16 +25,16 @@ const MainMenuList = () => {
         letterSpacing="0.04em"
         textTransform="uppercase"
       >
-        <Link to="/products" _hover={{ textDecoration: "none", opacity: "80%" }}>
+        <Link onClick={handleClick} to="/products" _hover={{ textDecoration: "none", opacity: "80%" }}>
           Products
         </Link>
-        <Link to="/login" _hover={{ textDecoration: "none" }}>
+        <Link onClick={handleClick} to="/login" _hover={{ textDecoration: "none" }}>
         Login
         </Link>
-        <Link to="/signup" _hover={{ textDecoration: "none" }}>
+        <Link onClick={handleClick} to="/signup" _hover={{ textDecoration: "none" }}>
           Signup
         </Link>
-        <Link to="/profile" _hover={{ textDecoration: "none" }}>
+        <Link onClick={handleClick} to="/profile" _hover={{ textDecoration: "none" }}>
           Profile
         </Link>
       </Flex>

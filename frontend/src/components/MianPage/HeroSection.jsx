@@ -6,9 +6,6 @@ const HeroSection = () => {
   return (
    <>
    <Image objectFit={"cover"} objectPosition={"right"} w='100%' src="/bannermain.png"></Image>
-   <Box>
-   <Products/>
-   </Box>
    </>
   )
 }

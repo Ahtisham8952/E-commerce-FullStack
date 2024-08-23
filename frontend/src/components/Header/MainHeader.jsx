@@ -10,7 +10,7 @@ import TopHeader from "./TopHeader";
 const MainHeader = () => {
   return (
     <>
-      <Box position="relative" zIndex="99999">
+      <Box  zIndex="99999">
       <TopHeader />
       <Box bg={"#2C344434"} minH="auto" position={"relative"} zIndex={"999"}>
         <Container maxW="1752px" mx="auto">

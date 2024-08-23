@@ -40,7 +40,7 @@ const ProductDetail = () => {
     <Container maxW="7xl" py={12}>
       <HStack spacing={10}>
         <Box flex="1" boxShadow="xl" borderRadius="lg" overflow="hidden">
-          <Img src={product.image} alt={product.title} objectFit="cover" w="100%" />
+          <Img src={product.image} alt={product.title}  />
         </Box>
         <VStack flex="1" align="start" spacing={4}>
           <Heading as="h1" size="xl">{product.title}</Heading>
