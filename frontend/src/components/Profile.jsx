@@ -3,6 +3,10 @@ import { Box, Flex, Avatar, Heading, Text, Button, Center, Image, IconButton, St
 import { FaUserPlus, FaEnvelope } from 'react-icons/fa';
 import { useDisplayUser } from '../context/UserContextProvider';
 
+import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
+
+const MotionHeading = motion(Heading);
 const Profile = () => {
   const { user } = useDisplayUser();
 
@@ -13,22 +17,30 @@ const Profile = () => {
   return (
     <Box 
     w="100%"
-    h="100vh"
-    backgroundImage="url('profilebg.png')"
+   
+   backgroundImage="url('bgblue.webp')"
     backgroundPosition="center"
     backgroundRepeat="no-repeat"
     backgroundSize="cover"
-    display="flex"
-    flexDirection={{ base: "column", md: "column", lg: "row" }}
-    alignItems="center"
-    justifyContent="center">
-      <Box p="20px"  w={{base:'100%',md:'30%'}}>
-
+    p="40px"
+  >
+        <MotionHeading
+      fontSize={{ base: "3xl", md: "4xl", lg: "6xl" }}
+      color="white"
+      textAlign="center"
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
+      Welcome to Breeze
+    </MotionHeading>
+      <Box p="20px"  w={{base:'100%',md:'50%'}} mx="auto">
+    
       
   <Box  
 
       
-      bg="rgba(255, 255, 255, 0.2)" // Semi-transparent background
+      bg="#161A2D" // Semi-transparent background
       backdropFilter="blur(10px)" // Blurred background effect
       borderRadius="15px" // Rounded corners
       boxShadow="0 4px 30px rgba(0, 0, 0, 0.1)" // Soft shadow for depth
@@ -42,13 +54,13 @@ const Profile = () => {
     <Image w="100px" h="100px" borderRadius={"50%"} src={user.avatar}></Image>
     </Box>
     <Box textAlign={"center"} mt="20px">
-      <Box bg="white" p='10px' borderRadius={"10px"} mb='10px' >
-        <Flex justifyContent={"space-between"}>
+      <Box borderBottom={"1px solid white"}  mb='10px' pb="5px" >
+        <Flex justifyContent={"space-between"} flexDirection={{base:'column',sm:'row'}}>
         <Text
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="600"
-                color="#000000"
+                color="white"
               
               >
               Name
@@ -57,7 +69,7 @@ const Profile = () => {
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="400"
-                color="#000000"
+                color="white"
               
               >
                {user.fullName}
@@ -66,13 +78,13 @@ const Profile = () => {
         </Flex>
 
       </Box>
-      <Box bg="white" p='10px' borderRadius={"10px"} mb="10px"  >
-        <Flex justifyContent={"space-between"}>
+      <Box borderBottom={"1px solid white"}  mb='10px' pb="5px"  >
+        <Flex justifyContent={"space-between"} flexDirection={{base:'column',sm:'row'}}>
         <Text
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="600"
-                color="#000000"
+                color="white"
               
               >
               username
@@ -81,7 +93,7 @@ const Profile = () => {
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="400"
-                color="#000000"
+                color="white"
               
               >
                {user.username}
@@ -90,13 +102,13 @@ const Profile = () => {
         </Flex>
 
       </Box>
-      <Box bg="white" p='10px' borderRadius={"10px"} mb="10px"  >
-        <Flex justifyContent={"space-between"}>
+      <Box borderBottom={"1px solid white"}  mb='10px' pb="5px"  >
+        <Flex justifyContent={"space-between"} flexDirection={{base:'column',sm:'row'}}>
         <Text
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="600"
-                color="#000000"
+                color="white"
               
               >
               email
@@ -105,7 +117,7 @@ const Profile = () => {
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="400"
-                color="#000000"
+                color="white"
               
               >
                {user.email}
@@ -114,13 +126,13 @@ const Profile = () => {
         </Flex>
 
       </Box>
-      <Box bg="white" p='10px' borderRadius={"10px"} mb="10px"  >
-        <Flex justifyContent={"space-between"}>
+      <Box borderBottom={"1px solid white"}  mb='10px' pb="5px"  >
+        <Flex justifyContent={"space-between"} flexDirection={{base:'column',sm:'row'}}>
         <Text
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="600"
-                color="#000000"
+                color="white"
               
               >
               Address
@@ -129,7 +141,7 @@ const Profile = () => {
                 fontSize="14px"
                 lineHeight="34px"
                 fontWeight="400"
-                color="#000000"
+                color="white"
               
               >
                {user.address}
@@ -138,13 +150,13 @@ const Profile = () => {
         </Flex>
 
       </Box>
-      <Box bg="white" p='10px' borderRadius={"10px"} mb="10px"  >
-        <Flex justifyContent={"space-between"}>
+      <Box borderBottom={"1px solid white"}  mb='10px' pb="5px"  >
+        <Flex justifyContent={"space-between"} flexDirection={{base:'column',sm:'row'}}>
         <Text
                 fontSize="24px"
                 lineHeight="34px"
                 fontWeight="600"
-                color="#000000"
+                color="white"
               
               >
               Phone
@@ -153,7 +165,7 @@ const Profile = () => {
                 fontSize="14px"
                 lineHeight="34px"
                 fontWeight="400"
-                color="#000000"
+                color="white"
               
               >
                {user.phonenumber}
@@ -162,6 +174,21 @@ const Profile = () => {
         </Flex>
 
       </Box>
+      <Button
+           as={Link}
+           to={"/cart"}
+            colorScheme='#7D31EA'
+            bg={"#7D31EA"}
+            color="white"
+            borderRadius="md"
+            shadow="md"
+            py={6}
+            px={8}
+            fontSize="lg"
+            fontWeight="bold"
+          >
+           Go to Cart
+          </Button>
     
              
     </Box>

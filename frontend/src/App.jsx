@@ -17,6 +17,10 @@ import ProductDetails from "./components/ProductDetail/ProductDetails";
 import Footer from "./components/Footer/Footer";
 import { Image } from "@chakra-ui/react";
 import HomePage from "./components/MianPage/HomePage";
+import TopHeaderBar from "./components/Header/TopHeaderBar";
+import Checkout from "./components/Checkout/CheckOut";
+import CheckOut from "./components/Checkout/CheckOut";
+import OrderConfirmation from "./components/Checkout/OrderConfirmation";
 
 
 function App() {
@@ -25,6 +29,7 @@ function App() {
   return (
     <UserContextProvider value={{ user, setUser }}>
       <Router>
+        
         <MainHeader />
 
         <Routes>
@@ -39,6 +44,9 @@ function App() {
             element={<ProtectedRoute element={<Profile />} />}
           />
           <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />
+          
+          <Route path="/Checkout" element={<ProtectedRoute element={<CheckOut />} />} />
+          <Route path="/OrderConfirmation" element={<ProtectedRoute element={<OrderConfirmation />} />} />
         </Routes>
         
         <Footer />

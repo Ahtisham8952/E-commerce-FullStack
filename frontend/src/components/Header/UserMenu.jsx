@@ -25,7 +25,7 @@ const UserMenu = () => {
     <>
    
       <Box color="white" w={"100px"} display={"flex"} gap={"10px"} alignItems={"center"}>
-        <Image w="30px" h="30px" borderRadius={"50%"} src={user.avatar}></Image>
+       
         <Text>Hello,</Text>
        <Box>{user.username}</Box>
        

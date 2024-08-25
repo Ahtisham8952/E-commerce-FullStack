@@ -72,21 +72,22 @@ const ProductDetail = () => {
 
   return (
     <Container maxW="7xl" py={12}>
-      <HStack spacing={10}>
+      <Box spacing={10}>
+        <Flex gap="30px" flexDirection={{base:'column',md:'row'}}>
         <Box>
-          <Img src={product.image} alt={product.title} />
+          <Img mx={"auto"} src={product.image} alt={product.title} />
         </Box>
         <VStack align="start" spacing={4}>
-          <Heading as="h1" size="36px" color='#FFFFFF'>{product.title}</Heading>
-          <Text fontSize="18px" color="#FFFFFF">{product.description}</Text>
+          <Text  fontSize={{base:'24px',md:'28px',lg:'36px'}} fontWeight={{base:'600',md:'900'}} color='#FFFFFF'>{product.title}</Text>
+          <Text fontSize={{base:'14px',md:'18px',lg:'18px'}} textAlign={"left"} color="#FFFFFF">{product.description}</Text>
           <Badge colorScheme="teal" fontSize="lg">${product.price}</Badge>
           <Divider />
           <Flex gap="20px">
             <Image src="/caution.svg" />
-            <Text fontSize="18px" color="#FFFFFF">Warning: This product contains nicotine. Nicotine is an addictive chemical.</Text>
+            <Text fontSize={{base:'14px',md:'18px',lg:'18px'}} color="#FFFFFF">Warning: This product contains nicotine. Nicotine is an addictive chemical.</Text>
           </Flex>
           <Divider />
-          <Box mb="8px" w="50%" bg="rgba(255, 255, 255, 0.77)" borderRadius={"50px"}>
+          <Box mb="8px" w={{base:'100%',md:'50%'}} bg="rgba(255, 255, 255, 0.77)" borderRadius={"50px"}>
             <ProductVariants 
               mgVariants={product.mgVariants} 
               selectedVariant={selectedVariant} 
@@ -147,7 +148,10 @@ const ProductDetail = () => {
             Add to cart
           </Button>
         </VStack>
-      </HStack>
+        </Flex>
+      
+        
+      </Box>
       <Box textAlign={"left"} mt='40px'>
         <Text color="#FFFFFF" fontSize="18px" fontWeight="400" mb="20px">Product Overview</Text>
         <Text color="#FFFFFF" fontSize="18px" fontWeight="400" mb="20px">Experience the timeless allure of classic red fruits, infused with a chilling sensation that elevates the familiar flavours to new levels of coolness and satisfaction.</Text>
