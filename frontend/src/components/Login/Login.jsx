@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Img, Text, Checkbox, Image, } from "@chakra-ui/react";
+import { Box, Button, Flex, Img, Text, Checkbox, Image, useToast, } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { Buttons } from "../signup/Buttons";
@@ -9,10 +9,12 @@ import PassHideShow from "../signup/PassHideShow";
 import axios from "axios";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const SigninForm = () => {
+  const {user}=useDisplayUser();
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
   const navigator = useNavigate();
   const { setUser } = useDisplayUser();
+  const toast = useToast();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -24,7 +26,16 @@ export const SigninForm = () => {
       console.log(data);
       setUser(data.data.user);
       console.log(data.data.user);
-      navigator("/profile");
+     
+      toast({
+        title: "Login Successfull",
+        description: `Login Successfull, ${user.fullName} please Continue Shopping `,
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+      navigator("/");
     } catch (error) {
       console.log(error);
     }

@@ -49,8 +49,9 @@ const MainMenuList = ({ onMenuLinkClick }) => {
       </Link>
       <Flex alignItems={"center"} gap="5px">
         <Image w="25px" h="25px" borderRadius={"50%"} src={user.avatar || '/profileicon.svg'} />
+       
         <Link onClick={handleClick} to="/profile" style={linkStyles("/profile")}>
-          Profile
+        {user ? user.fullName : 'Profile'}
         </Link>
       </Flex>
 
