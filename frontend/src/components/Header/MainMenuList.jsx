@@ -1,9 +1,10 @@
 import { Badge, Box, Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from 'react-router-dom';
 import UserMenu from "./UserMenu";
 import { useDisplayUser } from "../../context/UserContextProvider";
+import { openDrawer } from "../../features/Auth/drawerSlice";
 
 const MainMenuList = ({ onMenuLinkClick }) => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const MainMenuList = ({ onMenuLinkClick }) => {
     opacity: location.pathname === path ? "1" : "80%",
     color: location.pathname === path ? "#DD490A" : "#F0FCFB", // Change colors as needed
   });
+  const dispatch = useDispatch();
 
   return (
     <Flex
@@ -41,7 +43,7 @@ const MainMenuList = ({ onMenuLinkClick }) => {
       <Link onClick={handleClick} to="/products" style={linkStyles("/products")}>
         Products
       </Link>
-      <Link onClick={handleClick} to="/login" style={linkStyles("/login")}>
+      <Link  onClick={handleClick} to="/login" style={linkStyles("/login")}>
         Login
       </Link>
       <Link onClick={handleClick} to="/signup" style={linkStyles("/signup")}>
@@ -63,13 +65,13 @@ const MainMenuList = ({ onMenuLinkClick }) => {
         gap="42px"
       >
         <Link
-          to="/cart"
+          onClick={() => dispatch(openDrawer())}
           display="flex"
           gap="16px"
           color="white"
           bg="transparent"
           fontSize="14px"
-          style={linkStyles("/cart")} // Assuming you want to style this link similarly
+        // Assuming you want to style this link similarly
         >
           <Box display={"flex"} alignItems={"center"} gap="10px">
             <Box position="relative">
@@ -91,7 +93,7 @@ const MainMenuList = ({ onMenuLinkClick }) => {
                 {items.length}
               </Badge>
             </Box>
-            <Link onClick={handleClick} to="/cart" style={linkStyles("/cart")}>
+            <Link >
         Cart
       </Link>
           </Box>

@@ -31,7 +31,7 @@ function App() {
       <Router>
         
         <MainHeader />
-
+        <Cart />
         <Routes>
         <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignupForm />} />
@@ -43,7 +43,7 @@ function App() {
             path="/profile"
             element={<ProtectedRoute element={<Profile />} />}
           />
-          <Route path="/cart" element={<ProtectedRoute element={<Cart />} />} />
+          
           
           <Route path="/Checkout" element={<ProtectedRoute element={<CheckOut />} />} />
           <Route path="/OrderConfirmation" element={<ProtectedRoute element={<OrderConfirmation />} />} />
